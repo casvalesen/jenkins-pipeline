@@ -1,0 +1,31 @@
+pipeline {
+    agent any 
+    stages {
+        stage('setup'){
+            steps{
+                dir ('jenkins-spring'){
+                    deleteDir()
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'git clone https://github.com/rudihinds/jenkins-spring.git'
+                bat 'mvn clean -f jenkins-spring'
+            }
+            
+        }
+        stage('Test') {
+            steps{
+                bat 'mvn clean test -f jenkins-spring'
+                
+            }
+        }
+        stage('Deploy'){
+            steps{
+                bat 'mvn clean package -f jenkins-spring'
+                
+            }
+        }
+    }
+}
