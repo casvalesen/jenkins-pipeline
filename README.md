@@ -1,2 +1,2 @@
 # jenkins-pipeline
-Scripts for jenkins pipelining
+Template scripts for jenkins pipelining
